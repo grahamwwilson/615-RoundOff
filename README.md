@@ -1,2 +1,2 @@
 # 615-RoundOff
-Play with round-off error
+Explore round-off error and truncation error
