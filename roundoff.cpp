@@ -65,14 +65,16 @@ int main(){
    cout << "LDBL_EPSILON = " << LDBL_EPSILON << endl;
 
    TFile *f   = new TFile("histos.root","recreate");
-   TH1F *hist = new TH1F("hist", "hist", 80, 0.5, 80.5);
+   TH1D *hist = new TH1D("hist", "Numerical derivative; Iteration; Absolute error", 80, 0.5, 80.5);
+   hist->SetLineColor(4);
+   hist->SetLineWidth(2);
    
    const fptype DIVISOR=2.0l;
    fptype x=0.33333333333333333333l;
    fptype h=1.0l;
    for (unsigned int i=1; i<=80; ++i){
       fptype delta = numder(x,h);
-      hist->Fill(i,float(delta));
+      hist->Fill(i,delta);
       h = h/DIVISOR;
       cout << " " << endl;
    }
